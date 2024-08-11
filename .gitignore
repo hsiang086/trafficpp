@@ -1,0 +1,51 @@
+# Ignore build artifacts
+/build/
+/bin/
+/*.o
+/*.obj
+/*.exe
+/*.dll
+/*.so
+/*.dylib
+/*.lib
+/*.a
+
+# Ignore CMake generated files
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+
+# Ignore user-specific files
+*.user
+*.swp
+*.swo
+*.swn
+*.DS_Store
+*.vscode/
+.idea/
+/.vscode/
+/.clangd
+*.log
+
+# Ignore YAML-CPP FetchContent directory
+/build/_deps/
+
+# Ignore other temporary files
+*~
+*.tmp
+*.log
+*.pid
+*.seed
+*.old
+
+# Ignore compilation database
+compile_commands.json
+
+# Ignore backup files
+*.bak
+
+# Ignore auto-generated files
+/autom4te.cache/
+/core
+*.core
