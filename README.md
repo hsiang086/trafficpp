@@ -44,7 +44,7 @@ Trafficpp is a simple and lightweight network traffic sniffer built using C++ an
 
 ### Build
 ```bash
-git clone https://github.com/hsiang086/traffcpp.git
+git clone https://github.com/hsiang086/trafficpp.git
 cd traffcpp
 mkdir build && cd build && cmake ..
 make
@@ -52,7 +52,8 @@ make
 
 ## Usage
 ```bash
-sudo ./traffcpp [options]
+sudo ./bin/setpermission.sh
+./bin/Traffcpp [options]
 ```
 
 - `--help` or `-h`: Display help message.
