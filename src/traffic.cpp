@@ -8,29 +8,27 @@
 #define ETHERTYPE_IP 0x0800
 
 TrafficppSniffer::TrafficppSniffer(ArgParse& argparse) {
-    if (argparse.flags["run"]) {
-        pcap_if_t *alldevs;
-        pcap_if_t *d;
+    pcap_if_t *alldevs;
+    pcap_if_t *d;
 
-        // Find all available devices
-        if (pcap_findalldevs(&alldevs, errbuf) == -1) {
-            fprintf(stderr, "%s%sCouldn't find default device: %s%s\n", ColorText::RED.c_str(), ColorText::BOLD.c_str(), errbuf, ColorText::RESET.c_str());
-            exit(1);
-        }
-
-        dev = alldevs->name;
-
-        printf("%sUsing device: %s%s\n", ColorText::CYAN.c_str(), dev, ColorText::RESET.c_str());
-
-        pcd = pcap_open_live(dev, BUFSIZ, 1, 700, errbuf);
-        if (pcd == NULL) {
-            fprintf(stderr, "%s%sCouldn't open device %s: %s%s\n", ColorText::RED.c_str(), ColorText::BOLD.c_str(), dev, errbuf, ColorText::RESET.c_str());
-            pcap_freealldevs(alldevs); // Free the device list before exiting
-            exit(1);
-        }
-
-        pcap_freealldevs(alldevs);
+    // Find all available devices
+    if (pcap_findalldevs(&alldevs, errbuf) == -1) {
+        fprintf(stderr, "%s%sCouldn't find default device: %s%s\n", ColorText::RED.c_str(), ColorText::BOLD.c_str(), errbuf, ColorText::RESET.c_str());
+        exit(1);
     }
+
+    dev = alldevs->name;
+
+    printf("%sUsing device: %s%s\n", ColorText::CYAN.c_str(), dev, ColorText::RESET.c_str());
+
+    pcd = pcap_open_live(dev, BUFSIZ, 1, 700, errbuf);
+    if (pcd == NULL) {
+        fprintf(stderr, "%s%sCouldn't open device %s: %s%s\n", ColorText::RED.c_str(), ColorText::BOLD.c_str(), dev, errbuf, ColorText::RESET.c_str());
+        pcap_freealldevs(alldevs); // Free the device list before exiting
+        exit(1);
+    }
+
+    pcap_freealldevs(alldevs);
 }
 
 TrafficppSniffer::~TrafficppSniffer() {

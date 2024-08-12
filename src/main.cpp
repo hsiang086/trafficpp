@@ -6,8 +6,10 @@ int main(int argc, char **argv) {
 
     if (argParse.isValid()) {
         argParse.parse();
-        TrafficppSniffer trafficppSniffer(argParse);
-        trafficppSniffer.startSniffing();
+        if (argParse.flags["run"]) {
+            TrafficppSniffer trafficppSniffer(argParse);
+            trafficppSniffer.startSniffing();
+        }
     }
 
     return 0;
