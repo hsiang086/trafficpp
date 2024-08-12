@@ -1,0 +1,27 @@
+- name: "version"
+  args:
+    - "--version"
+    - "-v"
+  help: "Show version"
+  action: "show_version"
+
+- name: "help"
+  args:
+    - "--help"
+    - "-h"
+  help: "Show help"
+  action: "store_true"
+
+- name: "run"
+  args:
+    - "--run"
+    - "-r"
+  help: "Run the program"
+  action: "store_true"
+
+- name: "log"
+  args:
+    - "--log"
+    - "-l"
+  help: "Store the log from the program"
+  action: "store_true"

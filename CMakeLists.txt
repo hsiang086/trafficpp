@@ -21,7 +21,7 @@ if(NOT PCAP_LIBRARY OR NOT PCAP_INCLUDE_DIR)
     message(FATAL_ERROR "libpcap not found")
 endif()
 
-add_executable(Trafficpp src/argparse.cpp src/traffic.cpp src/main.cpp)
+add_executable(Trafficpp src/argparse.cpp src/color.cpp src/traffic.cpp src/main.cpp)
 
 target_include_directories(Trafficpp PRIVATE include ${PCAP_INCLUDE_DIR})
 target_link_libraries(Trafficpp PUBLIC yaml-cpp::yaml-cpp ${PCAP_LIBRARY})

@@ -1,13 +1,14 @@
 #include "argparse.h"
 #include "traffic.h"
 
-int main(int args, char **argv) {
-  ArgParse argparse(args, argv);
-  if (argparse.isValid()) {
-    argparse.parse();
-    if (argparse.run) {
-      test();
+int main(int argc, char **argv) {
+    ArgParse argParse(argc, argv);
+
+    if (argParse.isValid()) {
+        argParse.parse();
+        TrafficppSniffer trafficppSniffer(argParse);
+        trafficppSniffer.startSniffing();
     }
-  }
-  return 0;
+
+    return 0;
 }

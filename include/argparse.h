@@ -1,19 +1,34 @@
+#ifndef ARGPARSE_H
+#define ARGPARSE_H
 #pragma once
 
+#include <filesystem>
+#include <yaml-cpp/yaml.h>
+#include <string>
+#include <vector>
+#include <map>
+
 class ArgParse {
-    private:
-        int argc;
-        char **argv;
-    public:
-        ArgParse(int argc, char **argv) {
-            this->argc = argc;
-            this->argv = argv;
-        }
+public:
+    ArgParse(int argc, char **argv);
 
-        bool isValid();
-        void parse();
-        void printHelp();
-        void printVersion();
+    bool isValid();
+    void parse();
+    std::string getVersion();
+    std::map<std::string, bool> flags;
 
-        bool run = false;
+private:
+    int argc;
+    char **argv;
+    
+    YAML::Node config;
+    YAML::Node argsConfig;
+    std::map<std::string, std::string> options;
+
+    void processArg(const std::string& arg);
+    
+    void printVersion();
+    void printHelp();
 };
+
+#endif
