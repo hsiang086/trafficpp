@@ -1,6 +1,6 @@
 # Ignore build artifacts
 /build/
-/bin/
+/bin/Trafficpp
 /*.o
 /*.obj
 /*.exe
